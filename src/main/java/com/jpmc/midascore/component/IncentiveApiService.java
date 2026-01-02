@@ -1,0 +1,15 @@
+package com.jpmc.midascore.component;
+
+import com.jpmc.midascore.foundation.Transaction;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class IncentiveApiService {
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    public Incentive getIncentive(Transaction transaction) {
+        String url = "http://localhost:8080/incentive";
+        return restTemplate.postForObject(url, transaction, Incentive.class);
+    }
+}
